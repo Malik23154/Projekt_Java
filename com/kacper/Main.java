@@ -1,31 +1,24 @@
 package com.kacper;
 import com.kacper.hurtownia.Hurtownia;
+import com.kacper.klient.Klient;
+import com.kacper.sklep.Sklep;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Wprowadź nazwę hurtowni: ");
-        String nazwa = scan.next();
-        System.out.print("Wprowadź stan konta hurtowni: ");
-        int stanKonta = scan.nextInt();
-
-        var hurtownia = new Hurtownia(nazwa, stanKonta);
-        System.out.print("Podaj nazwę towaru, który chcesz dodać: ");
-        String towar = scan.next();
-        System.out.print("Podaj cenę towaru: ");
-        int cena = scan.nextInt();
-        System.out.print("Podaj ilość towaru: ");
-        int ilosc = scan.nextInt();
-        hurtownia.dodajTowar(towar, cena, ilosc);
+        var hurtownia = new Hurtownia("Budimex", 100000);
+        var sklep = new Sklep("U Marcina", 1000);
+        var klient = new Klient("Jarosław", "Kaczyński");
+        hurtownia.sprowadzTowarOdProducenta("Kostka brukowa", 10, 100000);
         hurtownia.magazyn();
-        System.out.print("Podaj towar, który chcesz kupić: ");
-        String towar2 = scan.next();
-        System.out.print("Podaj ilość towaru: ");
-        int ilosc2 = scan.nextInt();
-        hurtownia.sprzedajTowar(towar2, ilosc2);
+        sklep.kupOdHurtowni(hurtownia, "Kostka brukowa", 15, 500);
         hurtownia.magazyn();
-
+        sklep.magazyn();
+        hurtownia.usunTowar("Kostka brukowa");
+        hurtownia.magazyn();
+        System.out.println(klient.pracuj());
+        klient.kupTowary(sklep, "Kostka brukowa", 50);
+        System.out.println(klient.getGruboscPortfela());
     }
 }

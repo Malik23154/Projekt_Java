@@ -1,28 +1,26 @@
-package com.kacper.hurtownia;
+package com.kacper.sklep;
 
-import com.kacper.sklep.Sklep;
+import com.kacper.hurtownia.Hurtownia;
 
 import java.util.ArrayList;
 
-public class Hurtownia {
+public class Sklep {
     String nazwa;
     ArrayList<String> towary;
     ArrayList<Integer> cenyTowarow;
     ArrayList<Integer> iloscTowarow;
-    int stanKonta;
-
-    public int getStanKonta() {
-        return stanKonta;
+    int zawartoscKasy;
+    public int getZawartoscKasy() {
+        return zawartoscKasy;
     }
 
     public ArrayList<Integer> getIloscTowarow() {
         return iloscTowarow;
     }
-
-    public Hurtownia(String nazwa, int stanKonta) {
+    public Sklep(String nazwa, int zawartoscKasy) {
         this.nazwa = nazwa;
         this.towary = new ArrayList<>();
-        this.stanKonta = stanKonta;
+        this.zawartoscKasy = zawartoscKasy;
         this.cenyTowarow = new ArrayList<>();
         this.iloscTowarow = new ArrayList<>();
     }
@@ -31,10 +29,12 @@ public class Hurtownia {
         System.out.println("Ceny towarów: " + this.cenyTowarow);
         System.out.println("Ilość towarów: " + this.iloscTowarow);
     }
-    public void sprowadzTowarOdProducenta(String towar, int cenaTowaru, int ilosc){
+    public void kupOdHurtowni(Hurtownia hurtownia, String towar, int cenaTowaru, int ilosc){
         this.towary.add(towar);
         this.cenyTowarow.add(cenaTowaru);
         this.iloscTowarow.add(ilosc);
+        this.zawartoscKasy -= ilosc * cenaTowaru * 0.77;
+        hurtownia.sprzedajTowar(towar, ilosc);
     }
     public void usunTowar(String towar){
         for(int i = 0; i < this.towary.size(); i++)
@@ -55,12 +55,10 @@ public class Hurtownia {
             {
                 int obecnyStan = this.getIloscTowarow().get(i);
                 this.iloscTowarow.set(i, obecnyStan - ilosc);
-                this.stanKonta += (ilosc * cenyTowarow.get(i));
+                this.zawartoscKasy += (ilosc * cenyTowarow.get(i));
                 return ilosc * cenyTowarow.get(i);
             }
         }
         return 0;
     }
-
 }
-
