@@ -1,6 +1,5 @@
 package com.kacper.hurtownia;
 
-import com.kacper.sklep.Sklep;
 
 import java.util.ArrayList;
 
@@ -13,10 +12,6 @@ public class Hurtownia {
     ArrayList<Integer> cenyTowarow;
     ArrayList<Integer> iloscTowarow;
     int stanKonta;
-
-    public int getStanKonta() {
-        return stanKonta;
-    }
 
     public ArrayList<Integer> getIloscTowarow() {
         return iloscTowarow;
