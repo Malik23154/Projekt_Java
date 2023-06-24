@@ -4,6 +4,9 @@ import com.kacper.sklep.Sklep;
 
 import java.util.ArrayList;
 
+/**
+ * klasa hurtownia, która może sprowadzać towary od producenta oraz je sprzedawać
+ */
 public class Hurtownia {
     String nazwa;
     ArrayList<String> towary;
@@ -26,16 +29,28 @@ public class Hurtownia {
         this.cenyTowarow = new ArrayList<>();
         this.iloscTowarow = new ArrayList<>();
     }
+
+    /**
+     * metoda sprawdzająca stan magazynu
+     */
     public void magazyn(){
         System.out.println("Towary: " + this.towary);
         System.out.println("Ceny towarów: " + this.cenyTowarow);
         System.out.println("Ilość towarów: " + this.iloscTowarow);
     }
+
+    /**
+     * metoda dodająca towary "sprowadzając je od producenta"
+     */
     public void sprowadzTowarOdProducenta(String towar, int cenaTowaru, int ilosc){
         this.towary.add(towar);
         this.cenyTowarow.add(cenaTowaru);
         this.iloscTowarow.add(ilosc);
     }
+
+    /**
+     * metoda usuwająca towary po nazwie
+     */
     public void usunTowar(String towar){
         for(int i = 0; i < this.towary.size(); i++)
         {
@@ -48,6 +63,10 @@ public class Hurtownia {
             }
         }
     }
+
+    /**
+     * metoda sprzedająca towary dla sklepu
+     */
     public int sprzedajTowar(String towar, int ilosc){
         for(int i = 0; i < this.towary.size(); i++)
         {
