@@ -13,9 +13,6 @@ public class Sklep {
     ArrayList<Integer> cenyTowarow;
     ArrayList<Integer> iloscTowarow;
     int zawartoscKasy;
-    public int getZawartoscKasy() {
-        return zawartoscKasy;
-    }
 
     public ArrayList<Integer> getIloscTowarow() {
         return iloscTowarow;
